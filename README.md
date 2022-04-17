@@ -1,3 +1,3 @@
 # newrepo
-##Editing the file
+##Editing the file:
 IT is a markdown file for this repository.
