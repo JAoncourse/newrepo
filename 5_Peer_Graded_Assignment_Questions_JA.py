@@ -74,9 +74,9 @@ def compute_data_choice_2(df):
 app.layout = html.Div(children=[ 
                                 # TASK1: Add title to the dashboard
                                 # Enter your code below. Make sure you have correct formatting.,
-                                app.layout = html.Div(children=[html.H1('US Domestic Airline Flights Performance', 
-                                style={'textAlign': 'center', 'color': '#503D36',
-                                    'font-size': 24}),
+                                html.H1('US Domestic Airline Flights Performance',
+                                        style={'textAlign': 'center', 'color': '#503D36','font-size': 24} 
+                                       ),
     
                                 # REVIEW2: Dropdown creation,
                                  
@@ -90,6 +90,7 @@ app.layout = html.Div(children=[
                                             html.H2('Report Type:', style={'margin-right': '2em'}),
                                             ]
                                         ),
+                                      
                                         # TASK2: Add a dropdown
                                         # Enter your code below. Make sure you have correct formatting.
                                         dcc.Dropdown(id='input-type', 
@@ -97,12 +98,12 @@ app.layout = html.Div(children=[
                                                          {'label': 'Yearly Airline Performance Report', 'value': 'OPT1'},
                                                           {'label': 'Yearly Airline Delay Report', 'value': 'OPT2'}
                                                            ],
-                                                      placeholder='Select a report type
-                                                      style={'width'=0.8, 'padding'=3, 'font-size': 20, textAlign': 'center',
+                                                      placeholder='Select a report type',
+                                                      style={'width':'80%', 'padding':3, 'font-size': 20, 'textAlign':'center',
                                                       })
                                          
                                         # Providing a value to dropdown
-                                            ),
+                                           
                                     # Place them next to each other using the division style
                                     ], style={'display':'flex'}),
                                     
@@ -147,16 +148,16 @@ app.layout = html.Div(children=[
 # Callback function definition
 # TASK4: Add 5 ouput components
 # Enter your code below. Make sure you have correct formatting.,
-                [Output(component_id='plot1', component_property='children'),
+[Output(component_id='plot1', component_property='children'),
                  Output(component_id='plot2',component_property='children'),
                  Output(component_id='plot3',component_property='children'),
                  Output(component_id='plot4',component_property='children'),
                  Output(component_id='plot5',component_property='children')
                 ]
 
-@app.callback( [....],
-               [Input(component_id='input-type', component_property='value'),
+@app.callback(  [Input(component_id='input-type', component_property='value'),
                 Input(component_id='input-year', component_property='value')],
+              
               
                # REVIEW4: Holding output state till user enters all the form information. In this case, it will be chart type and year
                [State("plot1", 'children'), State("plot2", "children"),
