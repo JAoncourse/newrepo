@@ -13,7 +13,7 @@ from dash import no_update
 app = dash.Dash(__name__)
 
 # REVIEW1: Clear the layout and do not display exception till callback gets executed
-app.config.suppress_callback_exceptions = False
+app.config.suppress_callback_exceptions = True
 
 # Read the airline data into pandas dataframe
 airline_data =  pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/Data%20Files/airline_data.csv', 
@@ -126,8 +126,7 @@ app.layout = html.Div(children=[
                                 
                                 # Add Computed graphs
                                 # REVIEW3: Observe how we add an empty division and providing an id that will be updated during callback
-                                html.Div([ ], id='plot1'),
-    
+             
                                 html.Div([
                                         html.Div([ ], id='plot2'),
                                         html.Div([ ], id='plot3')
@@ -148,16 +147,13 @@ app.layout = html.Div(children=[
 # Callback function definition
 # TASK4: Add 5 ouput components
 # Enter your code below. Make sure you have correct formatting.,
-[Output(component_id='plot1', component_property='children'),
-                 Output(component_id='plot2',component_property='children'),
-                 Output(component_id='plot3',component_property='children'),
-                 Output(component_id='plot4',component_property='children'),
-                 Output(component_id='plot5',component_property='children')
-                ]
-
-@app.callback(  [Input(component_id='input-type', component_property='value'),
+@app.callback( [Output(component_id='plot1', component_property='children'),
+               Output(component_id='plot2', component_property='children'),
+               Output(component_id='plot3', component_property='children'),
+               Output(component_id='plot4', component_property='children'),
+               Output(component_id='plot5', component_property='children')],
+               [Input(component_id='input-type', component_property='value'),
                 Input(component_id='input-year', component_property='value')],
-              
               
                # REVIEW4: Holding output state till user enters all the form information. In this case, it will be chart type and year
                [State("plot1", 'children'), State("plot2", "children"),
